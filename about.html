@@ -9,16 +9,20 @@
 </head>
 <body>
   <!-- Sidebar/menu -->
-  <nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft w3-hover-white" style="width:100%;font-size:22px">Close Menu</a>
-    <div class="w3-container">
-      <h1 class="w3-padding-64"><b>David<br>Aikman</b></h1>
-    </div>
+  <nav class="w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px; font-weight:bold; display: none;" id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-display-topleft w3-hover-white" style="width:100%;font-size:22px">Close Menu</a>
+    <br>
+    <br>
     <div class="w3-bar-block">
-      <a href="projects/beliefPol.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Fun Projects</a>
-      <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-white" style="text-decoration: none;">About Me</a>
+      <a href="projects/beliefPol.html" onclick="w3_close()" class="w3-bar-item w3-hover-white" style="text-decoration: none;">Fun Projects</a>
+      <a href="#" onclick="w3_close()" class="w3-bar-item w3-white" style="text-decoration: none;">About Me</a>
     </div>
   </nav>
+  <!-- Top menu on small screens -->
+  <header class="w3-container w3-top w3-blue w3-xlarge w3-padding">
+    <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right w3-hover-white" onclick="w3_open()">☰</a>
+    <span>David Aikman</span>
+  </header>
 
   <!-- Top menu on small screens -->
   <header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
@@ -27,7 +31,7 @@
   </header>
 
   <!-- Overlay effect when opening sidebar on small screens -->
-  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+  <div class="w3-overlay" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
   <!-- !PAGE CONTENT! -->
   <div class="w3-main" style="margin-left:340px;margin-right:40px">
