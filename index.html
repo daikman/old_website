@@ -1,28 +1,366 @@
 <html lang="en">
 <head>
-  <title>David Aikman</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-  <link rel="stylesheet" href="style/style.css">
-  <style media="screen">
-    body {
-       background-image: url("images/clouds.png")
-    }
-  </style>
+<title>David Aikman</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="../style/style.css">
 </head>
-
 <body>
-  <div class="w3-white" style="text-align: center; margin: 100px auto;">
+
+  <!-- Sidebar/menu -->
+  <!-- <nav class="w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px; font-weight:bold; display: none;" id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-display-topleft w3-hover-white" style="width:100%;font-size:22px">Close Menu</a>
     <br>
-    <h1 class="w3-jumbo" style="margin: 0">David Aikman</h1>
-    <div class="w3-container">
-      <h3><a href="dataProjects/pewScience.html" class="w3-btn w3-blue" style="margin: 16px; border-radius: 32px">Data Projects</a>
-      <a href="projects/beliefPol.html" class="w3-btn w3-blue" style="margin: 16px; border-radius: 32px">Other Projects</a>
-      <br>
-      <a href="about.html" class="w3-btn w3-blue" style="margin: 16px; border-radius: 32px">About Me</a></h3>
+    <br>
+    <div class="w3-bar-block">
+      <a href="" onclick="w3_close()" class="w3-bar-item w3-hover-white" style="text-decoration: none;">Data Projects</a>
+      <a href="#" onclick="w3_close()" class="w3-bar-item w3-white" style="text-decoration: none;">Other Projects</a>
+      <a href="../about.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About Me</a>
     </div>
-    <br>
+  </nav> -->
+  <iframe src="https://editor.p5js.org/daikman/present/uYS0cv__N" style="width: 1920px; height: 200px; border: none;"></iframe>
+  <!-- Top menu on small screens -->
+  <header class="w3-container w3-top w3-blue w3-xlarge w3-padding">
+    <!-- <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right w3-hover-white" onclick="w3_open()">☰</a> -->
+    <span>David Aikman</span>
+  </header>
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <!-- <div class="w3-overlay" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div> -->
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:128px;margin-right:40px">
+    <!-- Header -->
+    <!-- <div class="w3-container" style="margin-top:5px" id="projects">
+      <h1 class="w3-jumbo"><b>Other Projects</b></h1>
+    </div>
+
+    buttons -->
+    <!-- <div class="w3-container" style="margin-left:32px">
+      <a href="autoDep.html" class="w3-btn">Symptom automata</a>
+      <a href="beliefPol.html" class="w3-btn w3-black">Belief Polarization</a>
+      <a href="hering.html" class="w3-btn">Hering Illusion</a>
+      <a href="rollerdata.html" class="w3-btn">Data Roller-coaster</a>
+    </div> -->
+
+    <!-- autoDep -->
+    <div class="w3-container" id="autoDep" style="margin-top:5px">
+      <h1 class="w3-xxxlarge w3-text-blue"><b> Symptoms of depression as stochastic cellular automata </b></h1>
+      <hr style="width:50px;border:5px solid #2196F3;" class="w3-round">
+      <iframe src="https://editor.p5js.org/daikman/present/qh4ST8l3s" style="width: 810px; height: 558px; border: none;"></iframe>
+      <div style="column-count: 1;">
+        <p>
+          <b> This is inspired by the paper <a href="#waldorp">'Mean field dynamics of stochastic cellular automata for random and small-world graphs'<sup>1</sup></a>, which goes beyond depression and stochastic cellular automata. </b>
+        </p>
+        <p>
+          As opposed to typical 'latent factor models' of psychopathology (mental illness),
+          whereby an illness like depression is caused by some underlying mechanism, independant from its symptoms,
+          there are 'network models' that treat the symptoms of an illness as being the cause of each other
+          (see <a href="#robinaugh"> Robinaugh et al., 2020<sup>2</sup></a> for a review).
+        </p>
+        <p>
+          The model illustrated above follows that second approach, modelling each symptom of depression
+          (I arbitrarily chose 16 symptoms from <a href="#fried">Fried, 2017<sup>3</sup></a>)
+          as a node in a network of cellular automata (Conway's game of life is a well-known example of cellular automata).
+          This means that whether or not a symptom is present depends on some rule that refers to the presence
+          or absence of the rest of the symptoms in the network.
+        </p>
+        <p>
+          In the example above, I use the rule described in the paper <a href="#waldorp"><sup>1</sup></a>.
+          This says that if fewer than or equal to half of a node's neighbours are active (black),
+          the probability that the node will become active is <i>p</i> (which you can adjust with the slider).
+          If more than half of a node's neighbours are active, its probability of activation is 1-<i>p</i>.
+        </p>
+        <p>
+          Each node has 5 neighbours: a node to its left, to its right, above it, below it, AND itself in its previous state.
+          Where nodes do not have visible neighbours, dotted lines represent a connection to the node on the opposite side of the grid.
+        </p>
+        <div class="picture">
+          <img src="images/depConnect.png" alt="">
+        </div>
+        <p>
+          For example, the node on the left and the node on the right are neighbours.
+        </p>
+        <p>
+          Something interesting (and possibly realistic) about this model is that it is <i> bistable </i> at low values of <i> p </i>.
+          For example, if <i>p</i> is very low (but not 0), it is likely that the network is either very active or very inactive, with some chance of transitioning from one state to the other.
+          Set <i>p</i> to 0.15 and speed up the animation to see this effect quite clearly. When <i> p </i> is even lower,
+          it might take a while for you to see a transition between states of activity.
+        </p>
+        <p>
+          One way this model may not be particularly realistic is that symptoms are either on or off.
+          However, symptoms of depression (and other mental illnesses) are often treated this way during diagnosis,
+          so the model may still be clinically relevent.
+        </p>
+        <p>
+          For a better discussion of the model, see <a href="#waldorp"> Waldorp and Kossakowski (2020) <sup>1<sup></a>.
+          They also expand on how to summarise the model in more useful ways (through the mean field of the network),
+          but the mathematics is beyond me at the moment. I might implement it here when I better understand.
+        </p>
+        <br>
+      <div id="ref">
+        <h3>References</h3>
+        <ol>
+          <li id="waldorp">
+              Waldorp, L., & Kossakowski, J. (2020). Mean field dynamics of stochastic
+              cellular automata for random and small-world graphs. Journal of Mathematical
+              Psychology, 97, 102380. doi: <a href="https://doi.org/10.1016/j.jmp.2020.102380" target="_blank">https://doi.org/10.1016/j.jmp.2020.102380</a>.
+            </li>
+            <br>
+            <li id="robinaugh">
+              Robinaugh, D. J., Hoekstra, R. H., Toner, E. R., & Borsboom, D. (2020).
+              The network approach to psychopathology: a review of the literature 2008–2018
+              and an agenda for future research. Psychological Medicine, 50(3), 353-366.
+              doi: <a href=" https://doi.org/10.1017/S0033291719003404" target="_blank"> https://doi.org/10.1017/S0033291719003404</a>.
+            </li>
+            <br>
+            <li id="fried">
+              Fried, E. I. (2017). The 52 symptoms of major depression: Lack of content
+              overlap among seven common depression scales. Journal of Affective Disorders, 208, 191-197.
+              doi: <a href="https://doi.org/10.1016/j.jmp.2020.102380" target="_blank">https://doi.org/10.1016/j.jmp.2020.102380</a>.
+            </li>
+        </ol>
+      </div>
+    </div>
   </div>
+    <!-- Belief Polarization -->
+    <div class="w3-container" id="belPol" style="margin-top:5px">
+      <h1 class="w3-xxxlarge w3-text-blue"><b>Belief Polarization</b></h1>
+      <hr style="width:50px;border:5px solid #2196F3;" class="w3-round">
+      <iframe src="https://editor.p5js.org/daikman/embed/R9Pvfdq_6" style="width: 730px; height: 530px; border: none;"></iframe>
+      <div style="column-count: 1;">
+        <p>
+          <b>This is an animated simulation based on the paper <a href="#ref">'The polarization within and across individuals: the hierarchical Ising opinion model'</a>.</b>
+        </p>
+        <p>
+          <b>You probably can't see it properly on a small screen.</b>
+        </p>
+        <p>
+          Each circle represents a person. The colour of the circle shows what that person currently believes.
+          The more green or blue a circle, the more strongly the person aligns with the green or blue belief (respectively).
+          The average belief of all people can be seen on the right-hand panel, as well as the recent history of the average belief.
+        </p>
+        <div class="picture">
+          <img src="images/selectedPerson.png"></img>
+          <p style="font-size: 0.8em;">A selected person</p>
+        </div>
+        <p>
+          Click on any person to see more informaiton about them.
+        </p>
+        <div class="picture">
+          <img src="images/statsPerson.png"></img>
+          <p style="font-size: 0.8em;">A person's statistics</p>
+        </div>
+        <p>
+          The belief bar shows how much the person supports green and blue.
+          A completely blue bar tells you they are extremely supportive of the blue belief.
+        </p>
+        <p>
+          The information bar tells you the relative strength with which the information someone has supports each position.
+        </p>
+        <p>
+          The attention bar tells you how attentive the person is the the green/blue issue. See the technical section below to see why this is important.
+        </p>
+        <p>
+          'Talking to' gives you information that is not useful in any way.
+        </p>
+        <div class="picture">
+          <img src="images/talkDemo.png"></img>
+          <p style="font-size: 0.8em;"> People talking </p>
+        </div>
+
+        <p>
+          When an orange line appears between two circles, this means they are talking about the great blue vs. green debate.
+          In most cases, this will result in an exchange of information, which may or may not result in a change of belief (see below).
+          This information either supports the green or blue position.
+        </p>
+        <div class="picture">
+          <img src="images/polarPerson.png"></img>
+          <p style="font-size: 0.8em;"> Polarization happening before your very eyes </p>
+        </div>
+        <p>
+          You may notice that although the average belief remains around equal support for each position,
+          this is not because most people are indifferent to the issue. It is because the issue is very polarizing.
+        </p>
+        <p>
+          If you click on any person, you will see that there belief tends towards the extremes. This is easier to see if you speed up the animation.
+        </p>
+        <p>
+          There are many ways that the model this animation is based on seems to
+          mirror real-life belief change. I might write more about it, but for now, see the original paper.
+        </p>
+      </div>
+      <p style="text-decoration: underline;"><b>Technical Explanation</b></p>
+      <p>Here is the basic algorithm:</p>
+      <ol>
+      <p>
+        People move around randomly.
+      </p>
+      <p>
+        At each interval (that you can change with the speed slider), a person is selected to make conversation.
+        The probability that a person will be selected depends on the attention they are paying to the issue (i.e., how much they care about it).
+      </p>
+      <p>
+        Once a person is selected, they make conversation with their nearest neighbour.
+      </p>
+      <p>
+        If the conversing people are not hugely differing in opinion, they exchange information and both become more attentive to the issue.
+      </p>
+      <p>
+        Everyone else's attention to the issue decays over time.
+      </p>
+      <p>
+        Before the next conversation, all peoples' beliefs are updated based on the information they have.
+      </p>
+    </ol>
+      <p>
+        For a fuller explanation, see the original paper. My version makes a few departures from the equations in the paper, but I think it broadly represents the same phenomena.
+      </p>
+      <br>
+      <div id="ref">
+        <h3>Reference</h3>
+        <p>Han L J van der Maas, Jonas Dalege, Lourens Waldorp, The polarization
+          within and across individuals: the hierarchical Ising opinion model, Journal of Complex Networks, Volume 8, Issue 2, April 2020, cnaa010,
+          <a href="https://doi.org/10.1093/comnet/cnaa010" target="_blank">https://doi.org/10.1093/comnet/cnaa010</a></p>
+      </div>
+    </div>
+
+    <!-- Hering Illusion -->
+    <div class="w3-container" id="herIll" style="margin-top:5px">
+      <h1 class="w3-xxxlarge w3-text-blue"><b>Hering Illusion</b></h1>
+      <hr style="width:50px;border:5px solid #2196F3" class="w3-round">
+      <iframe src="https://editor.p5js.org/daikman/embed/yOG6PuDD2" style="width: 530px; height: 560px; border: none;"></iframe>
+  			<p><b>This is the Hering Illusion!</b></p><p>Click anywhere on the animation to take control (then click again to relinquish your iron grip).</p>
+  				<p>The straight red lines should appear to be bent when they are close enough to the centre of the radial lines. If you wait, the red lines will change into a red square (not because of the illusion -  I just programmed a square to replace them).
+          </p>
+          <p>
+          Learn more about the illusion
+          <a href="https://www.illusionsindex.org/ir/hering-illusion" target="_blank">here<a>
+          on the <a href="https://www.illusionsindex.org/" target="_blank"> Ilussions Index<a>.
+  			</p>
+  	</div>
+
+    <!-- CLT -->
+    <div class="w3-container" id="CLT" style="margin-top:5px">
+      <h1 class="w3-xxxlarge w3-text-blue"><b>Central Limit Theorem and Latent Variables</b></h1>
+      <hr style="width:50px;border:5px solid #2196F3" class="w3-round">
+      <iframe id="example1" src="https://daikman.shinyapps.io/CLTLV/" style="border: 1px dashed black; width: 50%; height: 535px" frameborder="0"></iframe>
+  			<p>
+          <b>I have recently come across the concept of Central Limit Theorem (CLT)</b>, and wanted to visualise the phenomenon using an interactive <code> shiny </code> app.
+        </p>
+        <p>
+          Basically, CLT says that when you find the means (or sums, or other functions) of many variables, the resulting distribution is likely to be normal, independent of the distributions of each variable.
+        </p>
+        <p>
+          In the context of Psychometrics, CLT means that multi-item measures may produce normally distributed data when aggregated, regardless of the distribution of responses to each individual item.
+        </p>
+        <p>
+          With the app below (also found at https://daikman.shinyapps.io/CLTLV/), you can simulate data collected from a measure of a latent variable. In the simulation, all items have the same underlying distribution of responses, but CLT would apply in other cases also.
+        </p>
+        <p>
+          Notice how sample size makes very little difference to the distribution of observed variable means. Of course, sample size is important for other reasons.
+        </p>
+        <!-- <pre>
+          <code>
+            library(tidyverse)
+            library(ggplot2)
+            library(cowplot)
+            library(shiny)
+
+            CLT <- function(n.items = 10, sample.size = 50, distribution = c("normal", "uniform", "poisson", "exponential", "binomial")) {
+
+              sample.means <<- switch(distribution,
+                          "exponential" = replicate(n.items, mean(rexp(sample.size)))
+                          %>% as.data.frame(),
+                          "normal" = replicate(n.items, mean(rnorm(sample.size)))
+                          %>% as.data.frame(),
+                          "uniform" = replicate(n.items, mean(runif(sample.size, -1, 1)))
+                          %>% as.data.frame(),
+                          "poisson" = replicate(n.items, mean(rpois(sample.size, 1)))
+                          %>% as.data.frame(),
+                          "binomial" = replicate(n.items, mean(rbinom(sample.size, 1, .7)))
+                          %>% as.data.frame()
+                          )
+
+              gQQ <- ggplot(sample.means, aes(sample = .)) +
+              stat_qq() +
+              stat_qq_line(color = "blue") +
+              xlab("Theoretical") +
+              ylab("Sample")
+
+              gH <- ggplot(sample.means, aes(x =  .)) +
+              geom_density(color = "black", fill = "red", alpha = 0.5) +
+              stat_function(color = "blue", size = 1, fun = dnorm, args = list(mean = mean(sample.means$.), sd = sd(sample.means$.))) +
+              ylab("Density")
+
+              cowplot::plot_grid(gQQ, gH, ncol = 1)
+
+              }
+          </code>
+        </pre> -->
+
+  	</div>
+
+    <!-- simCor -->
+    <div class="w3-container" id="simCor" style="margin-top:5px">
+      <h1 class="w3-xxxlarge w3-text-blue"><b>Correlation P-values</b></h1>
+      <hr style="width:50px;border:5px solid #2196F3" class="w3-round">
+  			<p><b>In <a href="https://twitter.com/lakens" target="_blank">Daniel Laken</a>'s MOOC, <a href="https://www.coursera.org/learn/statistical-inferences" target="_blank">Improving Your Statistical Inferences</a></b>, he discusses the distribution of p-values you can expect from a t-test when there is a true effect, and when there is not.
+        </p>
+        <ul>
+          <item>If there is no true effect, all p-values are equally likely.</item>
+          <item>If there is a true effect, the probability of seeing a significant p-value is equivalent to the power of the test.</item>
+        </ul>
+        <p>
+          I decided to try some simulations for myself, but instead of using t-tests, I used Spearman's Rank correlations. I simulated 110,000 random samples of two normally distributed variables. The correlation between the variables was controlled such that there were 10,000 samples at r = 0, 10,000 at r = 0.1 and so on until r = 1. Each sample was tested using Spearman's Rank and the p-values of each test were recorded.
+        </p>
+        <p>
+          The distribution of p-values for each effect size can be seen below. Each bar is 0.05 "wide", meaning all values in the first bar are significant (when alpha = 0.05).
+        </p>
+        <div class="picture">
+          <img src="images/correlationP.gif"></img>
+          <p style="font-size: 0.8em;"> P-value distribution as population correlation increases. </p>
+        </div>
+        <p>
+          As expected, when there is no true effect (i.e., population correlation = 0), p-values are pretty much uniformly distributed. When there is an effect (population correlation > 0), the power of the test increases with the size of the effect.
+        </p>
+        <p>
+          What struck me was that from population correlation of 0.7 and above, the power of the test is 100%. I wouldn't have expected this, given that the sample size in the simulations was quite small (fixed at 50).
+  			</p>
+  	</div>
+
+    <!-- bottom buttons -->
+    <br>
+    <!-- <hr>
+    <div class="w3-container">
+      <h5>More Projects:</h5>
+      <div class="w3-container" style="margin-left:32px">
+        <div class="w3-container" style="margin-left:32px">
+          <a href="autoDep.html" class="w3-btn">Symptom automata</a>
+          <a href="beliefPol.html" class="w3-btn w3-black">Belief Polarization</a>
+          <a href="hering.html" class="w3-btn">Hering Illusion</a>
+          <a href="rollerdata.html" class="w3-btn">Data Roller-coaster</a>
+        </div>
+      </div>
+    </div>
+    <br> -->
+
+  <!-- End page content -->
+  </div>
+  <iframe src="https://editor.p5js.org/daikman/present/uYS0cv__N" style="width: 1920px; height: 200px; border: none;"></iframe>
+  <script>
+  // Script to open and close sidebar
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+  </script>
+
 </body>
+</html>
