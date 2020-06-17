@@ -4,18 +4,11 @@ body {
   font-size: 1.2em;
 }
 
-pre code {
-  background-color: grey;
-  border: 1px solid #999;
-  display: block;
-  padding: 20px;
-}
-
 .caption {
   margin: 0;
   font-size: 0.8em;
 }
 
 .picture {
-
+  
 }
